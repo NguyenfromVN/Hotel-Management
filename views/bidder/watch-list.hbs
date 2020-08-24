@@ -1,0 +1,241 @@
+<div class="card">
+  <div class="card-body">
+    <!-- Tabs List -->
+
+    <ul class="nav nav-tabs" id="tab-list" role="tablist">
+      {{#if user.isBidder}}
+      <li class="nav-item">
+        <a class="nav-link active" id="watch-tab" data-toggle="tab" href="#watch-list" role="tab" aria-controls="home"
+          aria-selected="true">Watch List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="join-tab" data-toggle="tab" href="#join-list" role="tab" aria-controls="profile"
+          aria-selected="false">Join List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="success-tab" data-toggle="tab" href="#success-list" role="tab" aria-controls="contact"
+          aria-selected="false">Success List</a>
+      </li>
+      {{/if}}
+      {{#if user.isSeller}}
+      <li class="nav-item">
+        <a class="nav-link" id="posting-tab" data-toggle="tab" href="#posting-list" role="tab" aria-controls="contact"
+          aria-selected="false">Posting List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="sold-tab" data-toggle="tab" href="#sold-list" role="tab" aria-controls="contact"
+          aria-selected="false">Sold List</a>
+      </li>
+      {{/if}}
+    </ul>
+    <div class="tab-content" id="tab-list-content">
+      <div class="tab-pane fade show active" id="watch-list">
+        <!-- Watch list -->
+        <div class="py-4">
+          <h3 class="display-4 text-center mb-4">Watch list</h3>
+          <table class="table">
+            <thead class="table-primary">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product title</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {{#each watchList }}
+              <tr>
+                <th scope="row">{{ index }}</th>
+                <td>{{ PName }}</td>
+                <td>{{ CurrentPrice }} VND</td>
+                <td>Not Yet</td>
+                <td>
+                  <a href="/{{ProID}}/product-detail" class="btn btn-primary text-white">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    Details
+                  </a>
+                </td>
+              </tr>
+              {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="join-list">
+        <!-- Join List -->
+        <div class="py-4">
+          <h3 class="display-4 text-center mb-4">Join list</h3>
+          <table class="table">
+            <thead class="table-warning">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product title</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Your Price</th>
+                <th scope="col">status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {{#each joinList }}
+              <tr>
+                <th scope="row">{{ index }}</th>
+                <td>{{ PName }}</td>
+                <td>{{ CurrentPrice }} VND</td>
+                <td>{{ Price }} VND</td>
+                <td>{{ status }}</td>
+                <td>
+                  <a href="/{{ProID}}/product-detail" class="btn btn-warning text-white">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    Details
+                  </a>
+                </td>
+              </tr>
+              {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="success-list">
+        <!-- Success List -->
+        <div class="py-4">
+          <h3 class="display-4 text-center mb-4">Success list</h3>
+          <table class="table">
+            <thead class="table-success">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product title</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {{#each successList }}
+
+              <tr>
+                <th scope="row">{{ index }}</th>
+                <td>{{ PName }}</td>
+                <td>{{ CurrentPrice }} VND</td>
+                <td>{{ status }}</td>
+                <td>
+                  <form class="d-inline" action="/judge" method="POST">
+                    <button type="submit" class="btn btn-secondary text-white">
+                      <input type="hidden" name="bidder" value="{{Seller}}">
+                      <input type="hidden" name="rating" value="1">
+                      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    </button>
+                  </form>
+
+                  <form class="d-inline" action="/judge" method="POST">
+                    <button type="submit" class="btn btn-secondary text-white">
+                      <input type="hidden" name="bidder" value="{{Seller}}">
+                      <input type="hidden" name="rating" value="0">
+                      <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+
+              {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="posting-list">
+        <!-- Posting List -->
+
+        <div class="py-4">
+          <h3 class="display-4 text-center mb-4">Posting list</h3>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product title</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {{#each postingList }}
+
+              <tr>
+                <th scope="row">{{ index }}</th>
+                <td>{{ PName }}</td>
+                <td>{{ CurrentPrice }} VND</td>
+                <td>Not Yet</td>
+                <td>
+                  <a href="/{{ProID}}/product-detail" class="btn btn-secondary text-white">
+                    <i class="fa fa-eye" aria-hidden="true"></i>
+                    Details
+                  </a>
+                </td>
+              </tr>
+
+              {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="sold-list">
+        <!-- Sold List -->
+        <div class="py-4">
+          <h3 class="display-4 text-center mb-4">Sold list</h3>
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product title</th>
+                <th scope="col">Current Price</th>
+                <th scope="col">Bidder</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {{#each soldList }}
+
+              <tr>
+                <th scope="row">{{index}}</th>
+                <td>{{ PName }}</td>
+                <td>{{ CurrentPrice }} VND</td>
+                <td>{{ TopBidder }}</td>
+                <td>
+                  <form class="d-inline" action="/judge" method="POST">
+                    <button type="submit" class="btn btn-secondary text-white">
+                      <input type="hidden" name="bidder" value="{{TopBidder}}">
+                      <input type="hidden" name="rating" value="1">
+                      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                    </button>
+                  </form>
+
+                  <form class="d-inline" action="/judge" method="POST">
+                    <button type="submit" class="btn btn-secondary text-white">
+                      <input type="hidden" name="bidder" value="{{TopBidder}}">
+                      <input type="hidden" name="rating" value="0">
+                      <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+                    </button>
+                  </form>
+
+                </td>
+              </tr>
+
+              {{/each}}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

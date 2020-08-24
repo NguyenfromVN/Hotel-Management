@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+      integrity="sha256-3h45mwconzsKjTUULjY+EoEkoRhXcOIU4l5YAw2tSOU="
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+      integrity="sha256-etrwgFLGpqD4oNAFW08ZH9Bzif5ByXK2lXNHKy7LQGo="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../public/assets/css/home.css" />
+    <title>Home</title>
+  </head>
+  <body class="bg-light">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-md navbar-dark bg-dark p-2"
+      id="main-navbar"
+    >
+      <div class="container">
+        <!-- Nav Brand -->
+        <a href="home.html" class="navbar-brand">Online Auction</a>
+        <!-- Button Responsive -->
+        <button
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navCollapse"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Collapse -->
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link">About us</a>
+            </li>
+            <li class="nav-item">
+              <a href="sign-in.html" class="nav-link">
+                <i class="fas fa-user"></i> Sign in</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- HEADER SECTION -->
+    <header class="mb-3 py-2 bg-primary" id="main-header">
+      <div class="container text-white">
+        <h2><i class="fas fa-home" aria-hidden="true"></i> Home</h2>
+      </div>
+    </header>
+    <!-- Search and Categories -->
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <div id="search-bar" class="card">
+              <div class="card-header">
+                <form action="#" method="POST">
+                  <div class="input-group mb-3">
+                    <input
+                      type="text"
+                      class="form-control d-block"
+                      name="search"
+                      placeholder="Search..."
+                    />
+                    <div class="input-group-append">
+                      <button class="btn btn-primary">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- Categories -->
+              <div id="categories" class="card-body">
+                <div id="accordion">
+                  <!-- Category 1 -->
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0">
+                        <div
+                          href="#collapse1"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                        >
+                          <i class="fas fa-arrow-circle-down"></i> Get
+                          Electronic
+                        </div>
+                      </h5>
+                    </div>
+                    <div id="collapse1" class="collapse show">
+                      <ul class="list-group text-center">
+                        <a
+                          href="#"
+                          class="list-group-item list-group-item-cation"
+                          >Phone</a
+                        >
+                        <a
+                          href="#"
+                          class="list-group-item list-group-item-cation active"
+                          >fan</a
+                        >
+                        <a
+                          href="#"
+                          class="list-group-item list-group-item-cation"
+                          >laptop</a
+                        >
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- Category 1 -->
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0">
+                        <div
+                          href="#collapse2"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                        >
+                          <i class="fas fa-arrow-circle-down"></i> Get Clothes
+                        </div>
+                      </h5>
+                    </div>
+                    <div id="collapse2" class="collapse show">
+                      <ul class="list-group text-center">
+                        <a
+                          href="#"
+                          class="list-group-item list-group-item-cation"
+                          >Phone</a
+                        >
+                        <a
+                          href="#"
+                          class="list-group-item list-group-item-cation"
+                          >fan</a
+                        >
+                        <a
+                          href="#"
+                          class="list-group-item list-group-item-cation"
+                          >laptop</a
+                        >
+                      </ul>
+                    </div>
+                  </div>
+                  <!-- Category 1 -->
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="mb-0">
+                        <div
+                          href="#collapse3"
+                          data-toggle="collapse"
+                          data-parent="#accordion"
+                        >
+                          <i class="fas fa-arrow-circle-down"></i>
+                          Somethings else
+                        </div>
+                      </h5>
+                    </div>
+                    <div id="collapse3" class="collapse">
+                      <div class="card-body">
+                        Lorem
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-9">
+            <!-- Top 5 end soon -->
+            <div class="top-5 row">
+              <div class="col text-center">
+                <h3 class="mb-3">Top 5 Products end soon</h3>
+                <div class="top-5-slick">
+                  <div>
+                    <div class="card mx-2 shadow ">
+                      <img
+                        src="http://source.unsplash.com/random/300x202"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>
+                          Price $
+                        </p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x201"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x200"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x199"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x203"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+            <!-- Top 5 end soon -->
+            <div class="top-5 row">
+              <div class="col text-center">
+                <h3 class="mb-3">Top 5 Products end soon</h3>
+                <div class="top-5-slick">
+                  <div>
+                    <div class="card mx-2 shadow ">
+                      <img
+                        src="http://source.unsplash.com/random/300x202"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>
+                          Price $
+                        </p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x201"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x200"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x199"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x203"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+            <!-- Top 5 end soon -->
+            <div class="top-5 row">
+              <div class="col text-center">
+                <h3 class="mb-3">Top 5 Products end soon</h3>
+                <div class="top-5-slick">
+                  <div>
+                    <div class="card mx-2 shadow ">
+                      <img
+                        src="http://source.unsplash.com/random/300x202"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>
+                          Price $
+                        </p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x201"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x200"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x199"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="card mx-2 shadow">
+                      <img
+                        src="http://source.unsplash.com/random/300x203"
+                        alt=""
+                        class="img-fluid"
+                      />
+                      <div class="card-body">
+                        <h4>Product Title</h4>
+                        <p class="text-muted">time end</p>
+                        <p>Price $</p>
+                        <button class="btn btn-primary">Details</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.js"
+      integrity="sha256-zUQGihTEkA4nkrgfbbAM1f3pxvnWiznBND+TuJoUv3M="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(".top-5-slick").slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 1000
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!-- Top 5 end soon -->
+<div class="top-5 row">
+  <div class="col text-center">
+    <h3 class="mb-3">Top 5 Products end soon</h3>
+    <div class="top-5-slick">
+      {{#each top5EndSoon }}
+      <div>
+        <div id="{{ProID}}" class="card mx-2 shadow card-home">
+          <img src="/images/{{ProID}}/1.jpg" alt="products image" class="img-fluid card-img-custom" />
+          <div class="card-body">
+            <h4>{{ PName }}</h4>
+            <p class="text-muted">{{ EndDays }} Days
+              <span class="countdown-clock" style="color: chocolate;">{{ EndFullTime}}</span>
+              <span class="d-none end-time">{{ EndTime }}</span>
+            </p>
+            <p>
+              {{ CurrentPrice }} VND
+            </p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <hr />
+  </div>
+</div>
+
+<!-- Top 5 Rating -->
+<div class="top-5 row">
+  <div class="col text-center">
+    <h3 class="mb-3">Top 5 Products Rating</h3>
+    <div class="top-5-slick">
+      {{#each top5Rating }}
+      <div>
+        <div id="{{ProID}}" class="card mx-2 shadow card-home">
+          <img src="/images/{{ProID}}/1.jpg" alt="products image" class="img-fluid card-img-custom" />
+          <div class="card-body">
+            <h4>{{ PName }}</h4>
+            <p class="text-muted">{{ EndDays }} Days
+              <span class="countdown-clock" style="color: chocolate;">{{ EndFullTime}}</span>
+              <span class="d-none end-time">{{ EndTime }}</span>
+            </p>
+            <p>
+              {{ CurrentPrice }} VND
+            </p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <hr />
+  </div>
+</div>
+<!-- Top 5 Price -->
+<div class="top-5 row">
+  <div class="col text-center">
+    <h3 class="mb-3">Top 5 Products Highest Price</h3>
+    <div class="top-5-slick">
+      {{#each top5Price }}
+      <div>
+        <div id="{{ProID}}" class="card mx-2 shadow card-home">
+          <img src="/images/{{ProID}}/1.jpg" alt="products image" class="img-fluid card-img-custom" />
+          <div class="card-body">
+            <h4>{{ PName }}</h4>
+            <p class="text-muted">{{ EndDays }} Days
+              <span class="countdown-clock" style="color: chocolate;">{{ EndFullTime}}</span>
+              <span class="d-none end-time">{{ EndTime }}</span>
+            </p>
+            <p>
+              {{ CurrentPrice }} VND
+            </p>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <hr />
+  </div>
+</div>

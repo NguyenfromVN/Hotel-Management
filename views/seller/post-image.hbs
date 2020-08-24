@@ -1,0 +1,54 @@
+<div class="card">
+  <div class="card-header content">
+    <form id="image-form" action="/post-product-image" method="POST" enctype="multipart/form-data" class="form-group">
+      <!-- Picture 1 -->
+      <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+        <input id="upload-1" type="file" name="file" onchange="readURL(this);" class="form-control border-0">
+        <label id="upload-label-1" for="upload-1" class="font-weight-light text-muted">Choose file</label>
+        <div class="input-group-append">
+          <label for="upload-1" class="btn btn-light m-0 rounded-pill px-4">
+            <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+            <small class="text-uppercase font-weight-bold text-muted">Choose file</small>
+          </label>
+        </div>
+      </div>
+      <!-- Picture 2 -->
+      <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+        <input id="upload-2" type="file" name="file" onchange="readURL(this);" class="form-control border-0">
+        <label id="upload-label-2" for="upload-2" class="font-weight-light text-muted">Choose file</label>
+        <div class="input-group-append">
+          <label for="upload-2" class="btn btn-light m-0 rounded-pill px-4">
+            <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+            <small class="text-uppercase font-weight-bold text-muted">Choose file</small>
+          </label>
+        </div>
+      </div>
+      <!-- Picture 3 -->
+      <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+        <input id="upload-3" type="file" name="file" onchange="readURL(this);" class="form-control border-0">
+        <label id="upload-label-3" for="upload-3" class="font-weight-light text-muted">Choose file</label>
+        <div class="input-group-append">
+          <label for="upload-3" class="btn btn-light m-0 rounded-pill px-4">
+            <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+            <small class="text-uppercase font-weight-bold text-muted">Choose file</small>
+          </label>
+        </div>
+      </div>
+      <!-- Picture 4 -->
+      <div class="input-group mb-3 px-2 py-2 rounded-pill bg-white shadow-sm">
+        <input id="upload-4" type="file" name="file" onchange="readURL(this);" class="form-control border-0">
+        <label id="upload-label-4" for="upload-4" class="font-weight-light text-muted">Choose file</label>
+        <div class="input-group-append">
+          <label for="upload-4" class="btn btn-light m-0 rounded-pill px-4">
+            <i class="fa fa-cloud-upload mr-2 text-muted"></i>
+            <small class="text-uppercase font-weight-bold text-muted">Choose file</small>
+          </label>
+        </div>
+      </div>
+
+      <button id="image-submit-button" type="button" class="button-login my-5" value="upload">
+        Post
+      </button>
+    </form>
+  </div>
+</div>

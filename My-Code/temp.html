@@ -1,0 +1,111 @@
+<head>
+    <style>
+        *{
+            height: 100%;
+        }
+        table {
+            width:100%;
+        }
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+        #t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        #t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        #t01 th {
+            background-color: black;
+            color: white;
+        }
+        a {
+            text-decoration: none;
+            box-sizing: border-box;
+            padding-bottom: 5px;
+        }
+    </style>
+</head>
+
+
+<div id="roomsContent">
+    <div style="padding-right: 5px; height: 100%">
+        <p>LIST OF ROOMS</p>
+        <div class="scrollable" >
+            <table id="t01">
+                <tr>
+                    <th>No.</th>
+                    <th>Room</th> 
+                    <th>Type</th>
+                    <th>Note</th>
+                </tr>
+                {{#each rooms}}
+                    <tr>
+                        <td>{{this.stt}}</td>
+                        <td>{{{this.ten}}}</td>
+                        <td>{{this.loai_phong}}</td>
+                        <td>{{{this.ghi_chu}}}</td>
+                    </tr>
+                {{/each}}
+            </table>
+        </div>
+    </div>
+    <div style="padding-left: 5px;">
+        <p>ADD NEW ROOM</p>
+        <form action="/add-room" method="post">
+            <p>Name:</p>
+            <input type="text" id="name" name="name"><br><br>
+            <p>Type of room ({{types}}):</p>
+            <input type="text" id="type" name="type"><br><br>
+            <p>Note:</p>
+            <input type="text" id="note" name="note"><br><br>
+            <input type="submit" value="SUBMIT">
+        </form>
+    </div>
+</div>
+<script>
+    {{#if notification}}
+        setTimeout(()=>alert('{{notification}}'),10);
+    {{/if}}
+</script>
+
+<script>setTimeout(()=>alert('{{notification}}'),10);</script>
+
+<button><a href="/logout">Log out</a></button>
+
+<div>
+    <p>HOTEL MANAGEMENT SYSTEM</p>
+    <P>version 1.0.0</P>
+</div>
+
+<script>
+if (notification!==undefined)
+alert('Successful transaction')
+setTimeout(()=>alert(),10);
+
+</script>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <title>
+            LOGIN
+        </title>
+    </head>
+    <body>
+        <form action="/login" method="post">
+            <p>PASSWORD:</p>
+            <input type="password" id="pwd" name="pwd" minlength="1"><br><br>
+            <input type="submit" value="Login">
+        </form>
+        <script>
+            setTimeout(()=>alert(1),10);
+        </script>
+    </body>
+</html>

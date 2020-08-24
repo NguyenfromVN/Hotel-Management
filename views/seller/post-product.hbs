@@ -1,0 +1,131 @@
+<div class="card">
+  <div class="card-header content">
+
+    <!-- Form -->
+    <form id="infor-form" action="/post-product" method="POST" class="form-group">
+      <!-- Name -->
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <label for="name" class="input-group-text">Product Name</label>
+        </div>
+        <input type="text" name="pname" placeholder="Name..." class="form-control d-inline" />
+      </div>
+      <!-- CatID -->
+      <div class="mb-4">
+        <input type="hidden">
+        <select class="custom-select mr-sm-2" name="catid" id="catid-select">
+          {{#each type}}
+          <option value="{{CatID}}">{{CatName}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <!-- Begin price -->
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <label for="name" class="input-group-text">Begin Price</label>
+        </div>
+        <input type="number" name="pprice" placeholder="Money..." class="form-control d-inline" />
+        <div class="input-group-append">
+          <label for="name" class="input-group-text">VND</label>
+        </div>
+      </div>
+      <!-- Price step -->
+      <div class="mb-4 input-group">
+        <div class="input-group-item mb-4">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label for="priceStep" class="input-group-text">Price Step</label>
+            </div>
+            <input type="number" name="priceStep" placeholder="Money..." class="form-control d-inline" />
+            <div class="input-group-append">
+              <label for="name" class="input-group-text">VND</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-group-item ml-auto mb-4">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <label for="ppurchase" class="input-group-text">Max Price</label>
+            </div>
+            <input type="number" name="ppurchase" placeholder="Money..." class="form-control d-inline" />
+            <div class="input-group-append">
+              <label for="name" class="input-group-text">VND</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{!-- Auto Add Time --}}
+      <div class="mb-4">
+        <input id="autoAddTimeCheck" type="checkbox" name="autoAddTime" />
+        <label id="autoAddTimeCheckLabel" for="autoAddTime">Auto add time</label>
+
+      </div>
+      <!-- Count Down -->
+      <div class="input-group mb-4">
+        <div class="input-group-prepend">
+          <label for="countdown" class="input-group-text">Count Down</label>
+        </div>
+        <input type="number" name="countdown" placeholder="number..." class="form-control d-inline" />
+        <div class="input-group-append">
+          <label for="countdown" class="input-group-text">Days</label>
+        </div>
+      </div>
+      <!-- Describe -->
+      <div class="mb-4">
+        <label for="body">Describe Product Here</label>
+        <textarea name="pdes" class="form-control"></textarea>
+      </div>
+      {{!-- Submit Button --}}
+      <button id="continue-button" type="button" class="button-login my-5">
+        Continue
+      </button>
+    </form>
+    {{!-- <form id="image-form" action="/post-product-image" method="POST" enctype="multipart/form-data"
+          class="form-group">
+          <!-- Picture 1 -->
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <label for="p1" class="input-group-text">Picture 1</label>
+            </div>
+            <div class="custom-file">
+              <input type="file" name="file" class="custom-file-input" id="p1" />
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+          <!-- Picture 2 -->
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <label for="name" class="input-group-text">Picture 2</label>
+            </div>
+            <div class="custom-file">
+              <input type="file" name="file" class="custom-file-input" id="p2" />
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+          <!-- Picture 3 -->
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+              <label for="name" class="input-group-text">Picture 3</label>
+            </div>
+            <div class="custom-file">
+              <input type="file" name="file" class="custom-file-input" id="p3" />
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+          <!-- Picture 4 -->
+          <div class="input-group mb-4">
+            <div class="input-group-prepend">
+              <label for="name" class="input-group-text">Picture 4</label>
+            </div>
+            <div class="custom-file">
+              <input type="file" name="file" class="custom-file-input" id="p4" />
+              <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+          </div>
+          <button type="submit" class="button-login my-5" value="upload">
+            Post
+          </button>
+        </form> --}}
+
+  </div>
+</div>

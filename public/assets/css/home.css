@@ -1,0 +1,221 @@
+/* Home */
+#categories {
+  min-height: 500px;
+}
+
+.top-5 hr {
+  width: 50%;
+}
+
+.card-home .card-img-custom {
+  /* min-height: 233px !important;
+  min-width: 233px !important;
+  max-height: 233px !important;
+  max-width: 233px !important; */
+  height: 169px !important;
+  width: 251px !important;
+}
+.card-home {
+  height: 390px !important;
+  cursor: pointer;
+}
+
+/* Img card in Detail */
+#img-slide {
+  height: 400px !important;
+}
+
+/* Login */
+
+.dark-overlay {
+  background: black;
+  opacity: 0.8;
+  min-height: 750px;
+  width: 100%;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  background-color: rgb(7, 111, 248);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo span {
+  font-size: 18px;
+  color: #fff;
+}
+
+/* Profile Image */
+.img-profile {
+  height: 200px;
+  width: 200px;
+}
+
+/* Button Login Customs */
+.button-login {
+  background: linear-gradient(to right, rgb(7, 111, 248), rgb(100, 100, 100));
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-weight: 300;
+  color: #fff;
+  display: block;
+  width: 100px;
+  height: 40px;
+  margin: 0 auto;
+  outline: none;
+  cursor: pointer;
+}
+
+.button-login:active {
+  transform: translateY(2px);
+}
+
+.button-login:focus {
+  outline: none;
+}
+
+tr:hover {
+  background-color: #f7f7f7;
+}
+/* Button edit */
+tr:hover .btn-edit {
+  display: inline-block !important;
+}
+
+.btn-edit:active {
+  transform: translateY(2px);
+}
+
+.btn-edit {
+  color: #007bff;
+  padding: 0;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+  display: none;
+}
+
+.btn-edit:focus {
+  outline: none;
+}
+
+/* Button delete */
+.btn-delete:active {
+  transform: translateY(2px);
+}
+
+tr:hover .btn-delete {
+  display: inline-block !important;
+}
+
+.btn-delete {
+  color: #dc3545;
+  padding: 0;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+  display: none;
+}
+
+.btn-delete:focus {
+  outline: none;
+}
+
+/* Button Add */
+.btn-add {
+  color: #28a745 !important;
+  padding: 0;
+  font-size: 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+.btn-add:active {
+  transform: translateY(2px);
+}
+
+.btn-add:focus {
+  outline: none;
+}
+
+/* Button Like */
+.btn-like {
+  color: #212529 !important;
+  padding: 0;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+tr:hover .btn-like {
+  display: inline-block;
+}
+
+.btn-like:active {
+  transform: translateY(-2px);
+}
+
+.btn-like:focus {
+  outline: none;
+}
+
+/* Button Unlike */
+.btn-unlike {
+  color: #212529 !important;
+  padding: 0;
+  font-size: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: none;
+  vertical-align: middle;
+  line-height: 1;
+}
+
+tr:hover .btn-unlike {
+  display: inline-block;
+}
+
+.btn-unlike:active {
+  transform: translateY(2px);
+}
+
+.btn-unlike:focus {
+  outline: none;
+}
+/* Logo Profile */
+
+/* Upload Image Custom */
+#upload-1,
+#upload-2,
+#upload-3,
+#upload-4 {
+  opacity: 0;
+}
+
+#upload-label-1,
+#upload-label-2,
+#upload-label-3,
+#upload-label-4 {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+}
