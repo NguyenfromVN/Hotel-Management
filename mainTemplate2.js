@@ -33,18 +33,6 @@ const htmlTemplate=
             #contentPanel{
                 box-sizing: border-box;
             }
-            #roomsContent{
-                display: grid;
-                box-sizing: border-box;
-                grid-template-columns: 1fr 1fr;
-                height: 100%;
-            }
-            #searchRoom{
-                display: grid;
-                box-sizing: border-box;
-                grid-template-columns: 1fr 1fr;
-                height: 100%;
-            }
             .scrollable{
                 overflow: auto;
             }
@@ -73,23 +61,16 @@ const htmlTemplate=
                 background-color: black;
                 color: white;
             }
-            a {
-                text-decoration: none;
-            }
-            #searchOptions{
-                display: flex;
-                padding-left: 27vw;
-            }
-            #buttons{
-                display: flex;
-            }
-            #stat{
+            #roomTypesContent{
                 display: grid;
                 box-sizing: border-box;
                 grid-template-columns: 1fr 1fr;
                 height: 100%;
             }
-            #roomTypesContent{
+            #buttons{
+                display: flex;
+            }
+            #CustomerTypesContent{
                 display: grid;
                 box-sizing: border-box;
                 grid-template-columns: 1fr 1fr;
@@ -99,24 +80,13 @@ const htmlTemplate=
                 padding-left: 35vw;
                 padding-top: 35vh;
             }
-            #chooseMonth{
-                padding-left: 35vw;
-                padding-top: 35vh;
-            }
-            #chooseRoom{
-                padding-left: 35vw;
-                padding-top: 35vh;
-            }
         </style>
     </head>
     <body id="container">
         <!-- Menu -->
         <div id="menu">
-            <button onclick="document.location='/rooms'">Rooms</button>
-            <button onclick="document.location='/rent'">Rent</button>
-            <button onclick="document.location='/search'">Search</button>
-            <button onclick="document.location='/bill'">Bill</button>
-            <button onclick="document.location='/stat'">Statistics</button>
+            <button onclick="document.location='/manager/customer-type'">Customer types</button>
+            <button onclick="document.location='/manager/room-type'">Room types</button>
             <button onclick="document.location='/logout'">Log out</button>
         </div>
         <div id="contentPanel">

@@ -88,7 +88,7 @@ const rooms=
     }); 
 </script>`;
 const about=
-`<div>
+`<div id='about'>
     <p>HOTEL MANAGEMENT SYSTEM</p>
     <P>version 1.0.0</P>
 </div>`;
@@ -195,7 +195,7 @@ const searchRoom=
 </div>
 </div>`;
 const chooseRoom=
-`<form action="/bill" method="get">
+`<form id='chooseRoom'action="/bill" method="get">
     <p>Enter room name:</p>
     <input type="text" id="name" name="name">      
 </form>
@@ -271,7 +271,7 @@ const stat=
 </div>
 </div>`;
 const chooseMonth=
-`<form action="/stat" method="get">
+`<form id='chooseMonth' action="/stat" method="get">
     <p>Enter month (from 1 to 12) to create Statistics:</p>
     <input type="text" id="month" name="month">      
 </form>
@@ -282,4 +282,158 @@ const chooseMonth=
         setTimeout(()=>alert(noti),100);
     </script>
 {{/if}}`;
-module.exports={rooms,about,rent,rentARoom,searchRoom,chooseRoom,createBill,stat,chooseMonth};
+const roomTypeManage=
+`<div id="roomTypesContent">
+<div class="scrollable" style="padding: 0px 5px 5px 5px; height: 100%; box-sizing: border-box;">
+    <p>LIST OF ROOM TYPES</p>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Type</th> 
+            <th>Price</th>
+            <th>Max number of customers</th>
+            <th>Surcharge rate</th>
+        </tr>
+        {{#each types}}
+            <tr id="{{this.id}}">
+                <td>{{this.stt}}</td>
+                <td>{{{this.ten}}}</td>
+                <td>{{this.don_gia}}</td>
+                <td>{{this.so_khach_toi_da}}</td>
+                <td>{{{this.ty_le_phu_thu}}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</div>
+<div style="padding: 0px 5px 5px 5px; height: 100%; box-sizing: border-box;">
+    <p>TYPE DETAIL</p>
+    <div>
+        <p id="id" style="display: none;"></p>
+        <p>Type:</p>
+        <input type="text" id="type" name="type"><br><br>
+        <p>Price:</p>
+        <input type="text" id="price" name="price"><br><br>
+        <p>Maximum customers count:</p>
+        <input type="text" id="max" name="max"><br><br>
+        <p>Surcharge rate:</p>
+        <input type="text" id="extra" name="extra"><br><br>
+    </div>
+    <div id="buttons">
+        <button id="add">ADD</button>
+        <button id="update" style="display: none;">UPDATE</button>
+    </div>
+</div>
+</div>
+{{#if notification}}
+<script>
+    let params = (new URL(document.location)).searchParams;
+    let noti = params.get("noti");
+    setTimeout(()=>alert(noti),100);
+</script>
+{{/if}}
+<script>
+//add event listener for each row of the table, except the first row
+let rows=[];
+let tmp=document.getElementsByTagName('tr');
+for (let i=1; i<tmp.length; i++)
+    rows.push(tmp[i]);
+for (let i=0; i<rows.length; i++)
+    rows[i].addEventListener('click',function(){
+        let caller=this;
+        let tds=caller.getElementsByTagName('td');
+        document.getElementById('update').style.display='inline-block';
+        //fill the form
+        document.getElementById('id').textContent=caller.id;
+        document.getElementById('type').value=tds[1].textContent;
+        document.getElementById('price').value=tds[2].textContent;
+        document.getElementById('max').value=tds[3].textContent;
+        document.getElementById('extra').value=tds[4].textContent;            
+    })
+//add event for Buttons
+document.getElementById('add').addEventListener('click',async function(){
+    let ten=document.getElementById('type').value;
+    let don_gia=document.getElementById('price').value;
+    let so_khach_toi_da=document.getElementById('max').value;
+    let ty_le_phu_thu=document.getElementById('extra').value;
+    document.location='/manager/room-type?mode=add&name='+ten+'&price='+don_gia+'&max='+so_khach_toi_da+'&extra='+ty_le_phu_thu;       
+});
+document.getElementById('update').addEventListener('click',async function(){
+    let id=document.getElementById('id').textContent;
+    let ten=document.getElementById('type').value;
+    let don_gia=document.getElementById('price').value;
+    let so_khach_toi_da=document.getElementById('max').value;
+    let ty_le_phu_thu=document.getElementById('extra').value;
+    document.location='/manager/room-type?mode=upd&id='+id+'&name='+ten+'&price='+don_gia+'&max='+so_khach_toi_da+'&extra='+ty_le_phu_thu;          
+});
+</script>`;
+const customTypeManage=
+`<div id="CustomerTypesContent">
+<div class="scrollable" style="padding: 0px 5px 5px 5px; height: 100%; box-sizing: border-box;">
+    <p>LIST OF CUSTOMER TYPES</p>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Type</th> 
+            <th>Coefficient</th>
+        </tr>
+        {{#each types}}
+            <tr id="{{this.id}}">
+                <td>{{this.stt}}</td>
+                <td>{{{this.ten}}}</td>
+                <td>{{this.he_so}}</td>
+            </tr>
+        {{/each}}
+    </table>
+</div>
+<div style="padding: 0px 5px 5px 5px; height: 100%; box-sizing: border-box;">
+    <p>TYPE DETAIL</p>
+    <div>
+        <p id="id" style="display: none;"></p>
+        <p>Type:</p>
+        <input type="text" id="type" name="type"><br><br>
+        <p>Coefficient:</p>
+        <input type="text" id="coef" name="coef"><br><br>
+    </div>
+    <div id="buttons">
+        <button id="add">ADD</button>
+        <button id="update" style="display: none;">UPDATE</button>
+    </div>
+</div>
+</div>
+{{#if notification}}
+<script>
+    let params = (new URL(document.location)).searchParams;
+    let noti = params.get("noti");
+    setTimeout(()=>alert(noti),100);
+</script>
+{{/if}}
+<script>
+//add event listener for each row of the table, except the first row
+let rows=[];
+let tmp=document.getElementsByTagName('tr');
+for (let i=1; i<tmp.length; i++)
+    rows.push(tmp[i]);
+for (let i=0; i<rows.length; i++)
+    rows[i].addEventListener('click',function(){
+        let caller=this;
+        let tds=caller.getElementsByTagName('td');
+        document.getElementById('update').style.display='inline-block';
+        //fill the form
+        document.getElementById('id').textContent=caller.id;
+        document.getElementById('type').value=tds[1].textContent;
+        document.getElementById('coef').value=tds[2].textContent;
+    })
+//add event for Buttons
+document.getElementById('add').addEventListener('click',async function(){
+    let ten=document.getElementById('type').value;
+    let he_so=document.getElementById('coef').value;
+    document.location='/manager/customer-type?mode=add&name='+ten+'&coef='+he_so;       
+});
+document.getElementById('update').addEventListener('click',async function(){
+    let id=document.getElementById('id').textContent;
+    let ten=document.getElementById('type').value;
+    let he_so=document.getElementById('coef').value;
+    document.location='/manager/customer-type?mode=upd&id='+id+'&name='+ten+'&coef='+he_so;          
+});
+</script>`;
+module.exports={rooms,about,rent,rentARoom,searchRoom,chooseRoom,createBill,stat,chooseMonth,roomTypeManage,customTypeManage};

@@ -16,6 +16,7 @@ const phieu_thue_phongDBService=import_phieu_thue_phongDBService();
 const khach_hang_phieu_thue_phongDBService=import_khach_hang_phieu_thue_phongDBService();
 const hoa_donDBService=import_hoa_donDBService();
 const templates=require('./templates.js');
+const htmlTemplate2=require('./mainTemplate2.js');
 const htmlTemplate=require('./mainTemplate');
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -45,7 +46,7 @@ app.get('/', function(req, res) {
             });
             res.end(html);
         } else {
-            res.send('not done yet!');
+            res.redirect('/manager');
         }
     } else {
         util.removeElement(arr,req.cookies.id);
@@ -559,6 +560,175 @@ app.get('/stat', async function (req, res){
         res.redirect('/login');
     }
 })
+app.get('/manager',async function (req, res){
+    if (util.validateCookie(req.cookies.id)){
+        let level=util.getUserLevel(arr,req.cookies.id);
+        if (level==1)
+            res.redirect('/');
+        else {
+            //return manager's screen
+            let html=htmlTemplate2.htmlTemplate;
+            let template=Handlebars.compile(html);
+            let aboutComponent=templates.about;
+            let html2=aboutComponent;
+            html=template({contentPanel:html2});
+            let dummy='';
+            for (let i=0; i<100; i++)
+                dummy+=' ';
+            html+=dummy;
+            res.writeHead(200, {
+                'Content-Type': 'text/html; charset=utf-8',
+                'Content-Length': html.length,
+                "Cache-Control": "no-cache, no-store, must-revalidate"
+            });
+            res.end(html);
+        }
+    } else {
+        util.removeElement(arr,req.cookies.id);
+        res.clearCookie('id');
+        res.redirect('/login');
+    }
+})
+app.get('/manager/room-type',async function(req, res){
+    if (util.validateCookie(req.cookies.id)){
+        let level=util.getUserLevel(arr,req.cookies.id);
+        if (level==1)
+            res.redirect('/');
+        else {
+            let mode=req.query['mode'];
+            if (mode===undefined){
+                let notification=req.query['noti'];
+                let html=htmlTemplate2.htmlTemplate;
+                let template=Handlebars.compile(html);
+                let component=templates.roomTypeManage;
+                //create content for component
+                let types=await loai_phongDBService.getAllTypes();
+                for (let i=0; i<types.length; i++)
+                    types[i].stt=i+1;
+                let template2=Handlebars.compile(component);
+                let html2=template2({notification,types});
+                html=template({contentPanel:html2});
+                let dummy='';
+                for (let i=0; i<100; i++)
+                    dummy+=' ';
+                html+=dummy;
+                res.writeHead(200, {
+                    'Content-Type': 'text/html; charset=utf-8',
+                    'Content-Length': html.length,
+                    "Cache-Control": "no-cache, no-store, must-revalidate"
+                });
+                res.end(html);
+            } else if (mode=='add'){
+                //get data
+                let ten=req.query['name'];
+                let don_gia=req.query['price'];
+                let so_khach_toi_da=req.query['max'];
+                let ty_le_phu_thu=req.query['extra'];
+                //check name is unique or not
+                let isOk=await loai_phongDBService.checkUniqueName(ten);
+                if (isOk)
+                    isOk=await loai_phongDBService.addNew({ten,don_gia,so_khach_toi_da,ty_le_phu_thu});
+                if (!isOk){
+                    let notification='This room type name is already exists';
+                    res.redirect('/manager/room-type?noti='+notification);
+                } else {
+                    let notification='Added new room type successfully';
+                    res.redirect('/manager/room-type?noti='+notification);
+                }
+            } else if (mode=='upd'){
+                //get data
+                let id=req.query['id'];
+                let ten=req.query['name'];
+                let don_gia=req.query['price'];
+                let so_khach_toi_da=req.query['max'];
+                let ty_le_phu_thu=req.query['extra'];
+                //check name is unique or not
+                let isOk=await loai_phongDBService.checkUniqueNameForUpdate(id,ten);
+                if (isOk)
+                    isOk=await loai_phongDBService.update({id,ten,don_gia,so_khach_toi_da,ty_le_phu_thu});
+                if (!isOk){
+                    let notification='This room type name is already exists';
+                    res.redirect('/manager/room-type?noti='+notification);
+                } else {
+                    let notification='Updated room type successfully';
+                    res.redirect('/manager/room-type?noti='+notification);
+                }
+            }
+        }
+    } else {
+        util.removeElement(arr,req.cookies.id);
+        res.clearCookie('id');
+        res.redirect('/login');
+    }
+})
+app.get('/manager/customer-type',async function(req, res){
+    if (util.validateCookie(req.cookies.id)){
+        let level=util.getUserLevel(arr,req.cookies.id);
+        if (level==1)
+            res.redirect('/');
+        else {
+            let mode=req.query['mode'];
+            if (mode===undefined){
+                let notification=req.query['noti'];
+                let html=htmlTemplate2.htmlTemplate;
+                let template=Handlebars.compile(html);
+                let component=templates.customTypeManage;
+                //create content for component
+                let types=await loai_khachDBService.getAllTypes();
+                for (let i=0; i<types.length; i++)
+                    types[i].stt=i+1;
+                let template2=Handlebars.compile(component);
+                let html2=template2({notification,types});
+                html=template({contentPanel:html2});
+                let dummy='';
+                for (let i=0; i<100; i++)
+                    dummy+=' ';
+                html+=dummy;
+                res.writeHead(200, {
+                    'Content-Type': 'text/html; charset=utf-8',
+                    'Content-Length': html.length,
+                    "Cache-Control": "no-cache, no-store, must-revalidate"
+                });
+                res.end(html);
+            } else if (mode=='add'){
+                //get data
+                let ten=req.query['name'];
+                let he_so=req.query['coef'];
+                //check name is unique or not
+                let isOk=await loai_khachDBService.checkUniqueName(ten);
+                if (isOk)
+                    isOk=await loai_khachDBService.addNew({ten,he_so});
+                if (!isOk){
+                    let notification='This customer type name is already exists';
+                    res.redirect('/manager/customer-type?noti='+notification);
+                } else {
+                    let notification='Added new customer type successfully';
+                    res.redirect('/manager/customer-type?noti='+notification);
+                }
+            } else if (mode=='upd'){
+                //get data
+                let id=req.query['id'];
+                let ten=req.query['name'];
+                let he_so=req.query['coef'];
+                //check name is unique or not
+                let isOk=await loai_khachDBService.checkUniqueNameForUpdate(id,ten);
+                if (isOk)
+                    isOk=await loai_khachDBService.update({id,ten,he_so});
+                if (!isOk){
+                    let notification='This customer type name is already exists';
+                    res.redirect('/manager/customer-type?noti='+notification);
+                } else {
+                    let notification='Updated customer type successfully';
+                    res.redirect('/manager/customer-type?noti='+notification);
+                }
+            }
+        }
+    } else {
+        util.removeElement(arr,req.cookies.id);
+        res.clearCookie('id');
+        res.redirect('/login');
+    }
+})
 app.use('/',function(req, res){
     res.send(`
     <div style="height: 100%; display:flex; justify-content: center; align-items: center">
@@ -834,7 +1004,45 @@ function import_loai_phongDBService(){
             if (arr[i].ten==name)
                 return arr[i];
     }
-    return {getAllTypes,getIdByName,getTypeById,getTypeByName};
+    async function checkUniqueName(name){
+        let tmp=await getTypeByName(name);
+        if (tmp===undefined)
+            return true;
+        return false;
+    }
+    async function addNew(type){
+        if (await getTypeByName(type.ten))
+            return false;
+        try {
+            await db.create('loai_phong',type);
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+        return true;
+    }
+    async function checkUniqueNameForUpdate(id,name){
+        let arr=await getAllTypes();
+        for (let i=0; i<arr.length; i++)
+            if (arr[i].id!=id)
+                if (arr[i].ten==name)
+                    return false;
+        return true;
+    }
+    async function update(type){
+        type.id=parseInt(type.id);
+        type.don_gia=parseInt(type.don_gia);
+        type.so_khach_toi_da=parseInt(type.so_khach_toi_da);
+        type.ty_le_phu_thu=parseFloat(type.ty_le_phu_thu);
+        try {
+            await db.update('loai_phong','id',type);
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+        return true;
+    }
+    return {getAllTypes,getIdByName,getTypeById,getTypeByName,checkUniqueName,addNew,checkUniqueNameForUpdate,update};
 }
 //file loai_khachDBService.js ================================================================
 function import_loai_khachDBService(){
@@ -849,7 +1057,43 @@ function import_loai_khachDBService(){
             if (arr[i].id==id)
                 return arr[i];
     }
-    return {getAllTypes,getById};
+    async function checkUniqueName(name){
+        let arr=await getAllTypes();
+        for (let i=0; i<arr.length; i++)
+            if (arr[i].ten==name)
+                return false;
+        return true;
+    }
+    async function addNew(type){
+        type.he_so=parseFloat(type.he_so);
+        try {
+            await db.create('loai_khach',type);
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+        return true;
+    }
+    async function checkUniqueNameForUpdate(id,name){
+        let arr=await getAllTypes();
+        for (let i=0; i<arr.length; i++)
+            if (arr[i].id!=id)
+                if (arr[i].ten==name)
+                    return false;
+        return true;
+    }
+    async function update(type){
+        type.id=parseInt(type.id);
+        type.he_so=parseFloat(type.he_so);
+        try {
+            await db.update('loai_khach','id',type);
+        } catch (e) {
+            console.log(e);
+            return false;
+        }
+        return true;
+    }
+    return {getAllTypes,getById,checkUniqueName,addNew,checkUniqueNameForUpdate,update};
 }
 //file khach_hangDBService.js ================================================================
 function import_khach_hangDBService(){
